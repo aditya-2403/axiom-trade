@@ -19,6 +19,7 @@ import {
 import { memo, useState } from "react";
 import PriceChange from "../shared/PriceChange";
 import VolumeBadge from "../shared/VolumeBadge";
+import TokenImage from "../shared/TokenImage";
 
 interface TokenModalProps {
   token: Token;
@@ -58,7 +59,7 @@ const TokenModal = memo(function TokenModal({
           <div className="sticky top-0 z-10 bg-axiom-card/95 backdrop-blur-sm border-b border-axiom-border p-6">
             <div className="flex items-center justify-between mb-6">
               <div className="flex items-center gap-4">
-                <div className="relative">
+                {/* <div className="relative">
                   <div className="w-14 h-14 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
                     <span className="text-white text-xl font-bold">
                       {token.symbol.charAt(0)}
@@ -67,7 +68,15 @@ const TokenModal = memo(function TokenModal({
                   <div className="absolute -bottom-1 -right-1 w-6 h-6 rounded-full bg-green-500 border-2 border-axiom-card flex items-center justify-center">
                     <Shield className="w-3 h-3 text-white" />
                   </div>
-                </div>
+                </div> */}
+
+                <TokenImage
+                  symbol={token.symbol}
+                  name={token.name}
+                  imageUrl={token.imageUrl as string}
+                  chain={token.chain}
+                  size="md"
+                />
                 <div>
                   <Dialog.Title className="text-2xl font-bold text-gray-100">
                     {token.name} ({token.symbol})

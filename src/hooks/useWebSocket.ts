@@ -14,7 +14,7 @@ export const useWebSocket = () => {
     // Mock WebSocket connection for simulation
     if (typeof window === 'undefined') return;
 
-    // In production, you would connect to a real WebSocket server
+    // In production
     // wsRef.current = new WebSocket('wss://api.axiom.trade/ws');
     
     // Simulate WebSocket updates
@@ -30,7 +30,7 @@ export const useWebSocket = () => {
         id: randomToken.id,
         price: Number(newPrice.toFixed(4))
       }));
-    }, 3000);
+    }, 1000);
 
     return () => clearInterval(interval);
   }, [dispatch]);
