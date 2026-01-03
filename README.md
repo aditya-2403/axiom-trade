@@ -25,6 +25,20 @@ A pixel-perfect replica of Axiom Trade's token discovery table built with Next.j
 - **Animations**: CSS transitions & Tailwind
 - **Performance**: Memoized components, code splitting
 
+## 📱 Responsive Design
+
+The application is fully responsive and adapts from 320px (mobile) up to 1920px (desktop).
+
+### **Layout Snapshots**
+
+| Device        | Width  | Screenshot                                             | Features                                               |
+| ------------- | ------ | ------------------------------------------------------ | ------------------------------------------------------ |
+| Mobile        | 320px  | ![Mobile 320px](/screenshots/mobile-320.png)           | Single column, condensed table, touch-friendly buttons |
+| Mobile        | 375px  | ![Mobile 375px](/screenshots/mobile-375.png)           | Improved spacing, readable text                        |
+| Tablet        | 768px  | ![Tablet 768px](/screenshots/tablet-768.png)           | Two-column layout, expanded table view                 |
+| Desktop       | 1024px | ![Desktop 1024px](/screenshots/desktop-1024.png)       | Full table with all columns visible                    |
+| Large Desktop | 1440px | ![Large Desktop 1440px](/screenshots/desktop-1440.png) | Expanded view with side panels, optimal spacing        |
+
 ## 📦 Installation
 
 ```bash

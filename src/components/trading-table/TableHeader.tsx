@@ -18,20 +18,28 @@ const TableHeader = memo(function TableHeader({
   onSort,
 }: TableHeaderProps) {
   return (
-    <div className="grid grid-cols-9 gap-4 px-6 py-4 border-b border-axiom-border bg-axiom-card/50 sticky top-0 z-10">
+    <div
+      className="px-6 py-4 border-b border-axiom-border bg-axiom-card/50 sticky top-0 z-10"
+      style={{
+        display: "grid",
+        gridTemplateColumns:
+          "192px 128px 144px 112px 160px 144px 112px 128px 96px",
+        gap: "19px",
+        alignItems: "center",
+      }}
+    >
       {COLUMNS.map((column) => (
         <div
           key={column.key}
           className={cn(
             "flex items-center gap-2 text-xs font-medium text-gray-400 uppercase tracking-wider",
-            column.sortable && "cursor-pointer hover:text-gray-300 select-none",
-            column.width
+            column.sortable && "cursor-pointer hover:text-gray-300 select-none"
           )}
           onClick={() => column.sortable && onSort(column.key as keyof Token)}
         >
-          <span>{column.label}</span>
+          <span className="truncate">{column.label}</span>
           {column.sortable && sortBy === column.key && (
-            <div className="flex flex-col">
+            <div className="flex flex-col flex-shrink-0">
               <ChevronUp
                 className={cn(
                   "w-3 h-3 -mb-1",

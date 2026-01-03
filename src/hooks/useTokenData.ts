@@ -18,7 +18,7 @@ export const useTokenData = (category?: string) => {
       const result = await dispatch(fetchTokens(category) as any);
       return result.payload;
     },
-    enabled: false, // We'll trigger manually on mount
+    enabled: false,
   });
 
   const handleSort = (column: keyof Token) => {
