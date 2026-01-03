@@ -12,6 +12,7 @@ export interface Token {
   chain: string;
   address: string;
   lastUpdated: string;
+  imageUrl?: string;
 }
 
 export interface TableState {

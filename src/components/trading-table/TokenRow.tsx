@@ -18,6 +18,7 @@ import TokenTooltip from "../token-details/TokenTooltip";
 import { CATEGORY_COLORS, CHAINS } from "@/lib/constants";
 import { useDispatch } from "react-redux";
 import { selectToken } from "@/store/slices/tokenSlice";
+import TokenImage from "../shared/TokenImage";
 
 interface TokenRowProps {
   token: Token;
@@ -53,39 +54,41 @@ const TokenRow = memo(function TokenRow({
   return (
     <div
       className={cn(
-        "grid grid-cols-9 gap-4 px-6 py-5 border-b border-axiom-border/30",
-        "hover:bg-axiom-border/10 cursor-pointer transition-colors group",
-        showPopover && "bg-axiom-border/10"
+        "px-6 py-5 border-b border-axiom-border/30",
+        "hover:bg-axiom-border/10 cursor-pointer transition-colors group"
       )}
+      style={{
+        display: "grid",
+        gridTemplateColumns:
+          "192px 128px 144px 112px 160px 144px 112px 128px 96px",
+        gap: "15px",
+        alignItems: "center",
+      }}
       onClick={handleRowClick}
-      onMouseEnter={() => setShowTooltip(true)}
-      onMouseLeave={() => setShowTooltip(false)}
+      // onMouseEnter={() => setShowTooltip(true)}
+      // onMouseLeave={() => setShowTooltip(false)}
     >
       {/* Token Name */}
-      <div className="flex items-center gap-3">
-        <div className="relative">
-          <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
-            <span className="text-white font-bold text-sm">
-              {token.symbol.charAt(0)}
+      <div className="flex items-center gap-3 min-w-0">
+        <TokenImage
+          symbol={token.symbol}
+          name={token.name}
+          imageUrl={token.imageUrl as string}
+          chain={token.chain}
+          size="md"
+        />
+        <div className="flex flex-col min-w-0">
+          <div className="flex items-center gap-2 min-w-0">
+            <span className="font-medium text-gray-100 truncate">
+              {token.name}
             </span>
-          </div>
-          <div
-            className={cn(
-              "absolute -bottom-1 -right-1 w-4 h-4 rounded-full border-2 border-axiom-bg",
-              getChainColor(token.chain)
-            )}
-          />
-        </div>
-        <div className="flex flex-col">
-          <div className="flex items-center gap-2">
-            <span className="font-medium text-gray-100">{token.name}</span>
             <TokenTooltip token={token} isOpen={showTooltip} />
           </div>
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 min-w-0">
             <span className="text-sm text-gray-400">{token.symbol}</span>
             <span
               className={cn(
-                "text-xs px-2 py-0.5 rounded-full border",
+                "text-xs px-2 py-0.5 rounded-full border flex-shrink-0",
                 CATEGORY_COLORS[token.category]
               )}
             >
@@ -139,7 +142,7 @@ const TokenRow = memo(function TokenRow({
 
       {/* Age */}
       <div className="flex items-center gap-2">
-        <Clock className="w-4 h-4 text-gray-500" />
+        <Clock className="w-4 h-4 text-gray-500 flex-shrink-0" />
         <span className="font-medium text-gray-300">
           {formatAge(token.age)}
         </span>
@@ -154,7 +157,10 @@ const TokenRow = memo(function TokenRow({
           )}
         >
           <div
-            className={cn("w-2 h-2 rounded-full", getChainColor(token.chain))}
+            className={cn(
+              "w-2 h-2 rounded-full flex-shrink-0",
+              getChainColor(token.chain)
+            )}
           />
           {token.chain}
         </div>
@@ -168,7 +174,7 @@ const TokenRow = memo(function TokenRow({
           onOpenChange={setShowPopover}
         >
           <button
-            className="p-2 hover:bg-axiom-border rounded-lg transition-colors"
+            className="p-2 hover:bg-axiom-border rounded-lg transition-colors flex-shrink-0"
             onClick={(e) => {
               e.stopPropagation();
               setShowPopover(true);
