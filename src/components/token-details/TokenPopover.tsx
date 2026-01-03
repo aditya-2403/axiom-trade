@@ -13,6 +13,7 @@ import {
   Wallet,
 } from "lucide-react";
 import { memo, useState } from "react";
+import TokenImage from "../shared/TokenImage";
 
 interface TokenPopoverProps {
   token: Token;
@@ -45,7 +46,10 @@ const TokenPopover = memo(function TokenPopover({
   ];
 
   return (
-    <Popover.Root {...(isOpen !== undefined && { open: isOpen })} {...(onOpenChange !== undefined && { onOpenChange })}>
+    <Popover.Root
+      {...(isOpen !== undefined && { open: isOpen })}
+      {...(onOpenChange !== undefined && { onOpenChange })}
+    >
       <Popover.Trigger asChild>{children}</Popover.Trigger>
 
       <Popover.Portal>
@@ -57,7 +61,7 @@ const TokenPopover = memo(function TokenPopover({
         >
           {/* Token Info */}
           <div className="p-3 border-b border-axiom-border">
-            <div className="flex items-center gap-3 mb-3">
+            {/* <div className="flex items-center gap-3 mb-3">
               <div className="w-8 h-8 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
                 <span className="text-white text-xs font-bold">
                   {token.symbol.charAt(0)}
@@ -69,7 +73,15 @@ const TokenPopover = memo(function TokenPopover({
                 </h4>
                 <p className="text-xs text-gray-400">{token.symbol}</p>
               </div>
-            </div>
+            </div> */}
+
+            <TokenImage
+              symbol={token.symbol}
+              name={token.name}
+              imageUrl={token.imageUrl as string}
+              chain={token.chain}
+              size="md"
+            />
 
             {/* Address */}
             <div className="flex items-center gap-2 p-2 bg-gray-900/50 rounded-lg">
